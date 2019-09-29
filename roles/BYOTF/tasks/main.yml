@@ -10,16 +10,22 @@
 
 - name: Init
   shell: terraform init
+  environment:
+    TERRAFORM_IN_AUTOMATION: 1
   args:
     chdir: /tmp/tf/examples/volume-attachment
 
 - name: Plan
   shell: terraform plan -no-color -out tfplan
+  environment:
+    TERRAFORM_IN_AUTOMATION: 1
   args:
     chdir: /tmp/tf/examples/volume-attachment
 
 - name: Apply
   shell: terraform apply -auto-approve -no-color  "tfplan"
+  environment:
+    TERRAFORM_IN_AUTOMATION: 1
   args:
     chdir: /tmp/tf/examples/volume-attachment
 
