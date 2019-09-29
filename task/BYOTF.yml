@@ -1,0 +1,6 @@
+---
+- name: BYOTF (Bring Your Own Terraform) - A Terraform Wrapper Written In Ansible
+  hosts: localhost
+  connection: local
+  roles:
+  - { role: BYOTF }

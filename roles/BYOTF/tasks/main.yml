@@ -1,2 +1,25 @@
 ---
 # tasks file for BYOTF
+
+- name: Git clone
+  git:
+    repo:  https://github.com/jacob-hudson/ludacrisTF.git
+    version: master
+    dest: /tmp/tf
+    accept_hostkey: yes
+
+- name: Init
+  shell: terraform init
+  args:
+    chdir: /tmp/tf/examples/volume-attachment
+
+- name: Plan
+  shell: terraform plan -no-color -out tfplan
+  args:
+    chdir: /tmp/tf/examples/volume-attachment
+
+- name: Apply
+  shell: terraform apply -auto-approve -no-color  "tfplan"
+  args:
+    chdir: /tmp/tf/examples/volume-attachment
+
